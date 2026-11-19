@@ -1,0 +1,22 @@
+[package]
+name = "tpu-mux"
+version = "0.1.0"
+edition = "2024"
+publish = false
+
+[dependencies]
+anyhow = "1"
+clap = { version = "4", features = ["derive"] }
+flux = { git = "https://github.com/gattaca-com/flux.git", rev = "d763d9064c186bc7226b1f3e3ab0a06918f8e64c" }
+bytes = "1"
+serde = { version = "1", features = ["derive"] }
+tempfile = "3"
+tracing = "0.1"
+proto = { package = "anza-quinn-proto", version = "=0.11.18-issue2860.1", default-features = false, features = ["rustls-ring"] }
+quinn-udp = "0.5"
+solana-keypair = "4"
+solana-tls-utils = { version = "=4.4.1", features = ["agave-unstable-api"] }
+
+[dev-dependencies]
+quinn = { package = "anza-quinn", version = "=0.11.12-issue2860.1", default-features = false, features = ["runtime-tokio", "rustls-ring"] }
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal", "sync", "time"] }
